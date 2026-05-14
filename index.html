@@ -644,23 +644,19 @@ section:nth-child(even){background:var(--bg-card)}
 
   <!-- VIDEO PANEL (sticky) -->
   <div class="video-panel">
-    <p class="video-label">Lettura del canto</p>
-    <div class="video-wrap">
-      <!--
-        ISTRUZIONI VIDEO:
-        1. Rinomina il tuo video "video.mp4"
-        2. Caricalo nella root del repository GitHub (stessa cartella di index.html)
-        3. Il video apparirà automaticamente qui
-      -->
-      <video controls poster="img/video-poster.jpg">
-        <source src="video.mp4" type="video/mp4">
-        <p style="color:var(--text-muted);font-size:14px;padding:1rem">
-          Il video apparirà qui una volta caricato il file <code>video.mp4</code> nella root del repository.
-        </p>
-      </video>
-    </div>
-    <p class="video-note">Le terzine e il commento scorrono accanto al video</p>
+  <p class="video-label">Lettura del canto</p>
+  <div class="video-wrap">
+    <iframe
+      src="https://drive.google.com/file/d/11xmkw4EDFLtOgZsrJWlUONS_CKa7YGlv/preview"
+      width="100%"
+      height="100%"
+      style="border:1px solid var(--border-mid);background:#000;"
+      allow="autoplay"
+      allowfullscreen>
+    </iframe>
   </div>
+  <p class="video-note">Le terzine e il commento scorrono accanto al video</p>
+</div>
 
   <!-- TERZINE + COMMENTO (scrollable) -->
   <div class="terzine-panel">
