@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inferno · Canto XXXIII · Dante Alighieri</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#06040200;
+  --bg-base:#080503;
+  --bg-card:#0f0b07;
+  --bg-raised:#161009;
+  --text:#e4d5b8;
+  --text-muted:#8a7860;
+  --text-dim:#5a4c38;
+  --crimson:#8b1a1a;
+  --crimson-mid:#a52222;
+  --gold:#c9a227;
+  --gold-light:#dbb840;
+  --border:#231a0e;
+  --border-mid:#3a2a18;
+  --font-d:'Cinzel',serif;
+  --font-b:'EB Garamond',serif;
+  --nav-h:64px;
+}
+html{scroll-behavior:smooth;background:var(--bg-base)}
+body{font-family:var(--font-b);color:var(--text);font-size:18px;line-height:1.7;background:var(--bg-base);overflow-x:hidden}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;width:100%;z-index:100;
+  background:rgba(8,5,3,0.97);
+  border-bottom:1px solid var(--border-mid);
+  height:var(--nav-h);
+  display:flex;align-items:center;
+}
+.nav-inner{
+  width:100%;max-width:1400px;margin:0 auto;
+  padding:0 2rem;
+  display:flex;align-items:center;gap:0;
+}
+.nav-logo{
+  font-family:var(--font-d);font-size:14px;letter-spacing:.12em;
+  color:var(--gold);text-decoration:none;white-space:nowrap;margin-right:3rem;
+}
+.nav-links{display:flex;gap:0;flex:1;overflow-x:auto;scrollbar-width:none}
+.nav-links::-webkit-scrollbar{display:none}
+.nav-links a{
+  font-family:var(--font-d);font-size:11px;letter-spacing:.1em;
+  color:var(--text-muted);text-decoration:none;padding:.5rem 1rem;
+  text-transform:uppercase;white-space:nowrap;
+  transition:color .2s;border-bottom:2px solid transparent;
+}
+.nav-links a:hover{color:var(--gold)}
+.nav-links a.active{color:var(--gold);border-bottom-color:var(--gold)}
+
+/* SECTIONS */
+section{
+  min-height:100vh;padding:calc(var(--nav-h) + 4rem) 0 5rem;
+  position:relative;
+}
+section:nth-child(odd){background:var(--bg-base)}
+section:nth-child(even){background:var(--bg-card)}
+.container{width:100%;max-width:1200px;margin:0 auto;padding:0 2.5rem}
+
+/* SECTION HEADER */
+.sec-label{
+  font-family:var(--font-d);font-size:10px;letter-spacing:.25em;
+  color:var(--crimson);text-transform:uppercase;margin-bottom:.75rem;
+}
+.sec-title{
+  font-family:var(--font-d);font-size:clamp(2rem,4vw,3.2rem);
+  font-weight:600;color:var(--text);line-height:1.2;margin-bottom:2.5rem;
+}
+.sec-title span{color:var(--gold)}
+.divider{
+  width:60px;height:1px;background:var(--gold);margin-bottom:2.5rem;
+}
+
+/* HERO */
+#home{
+  min-height:100vh;padding:0;
+  display:grid;place-items:center;
+  background:var(--bg-base);
+  position:relative;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 60% 60% at 70% 50%, rgba(139,26,26,.13) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 40% at 30% 40%, rgba(201,162,39,.06) 0%, transparent 60%);
+  pointer-events:none;
+}
+.hero-roman{
+  position:absolute;right:-3rem;top:50%;transform:translateY(-50%);
+  font-family:var(--font-d);font-size:clamp(12rem,22vw,22rem);font-weight:900;
+  color:rgba(255,255,255,.015);letter-spacing:-.05em;pointer-events:none;
+  user-select:none;line-height:1;
+}
+.hero-content{
+  text-align:center;max-width:900px;padding:2rem;position:relative;z-index:1;
+}
+.hero-eyebrow{
+  font-family:var(--font-d);font-size:11px;letter-spacing:.3em;
+  color:var(--crimson);text-transform:uppercase;margin-bottom:1.5rem;
+  display:flex;align-items:center;justify-content:center;gap:1rem;
+}
+.hero-eyebrow::before,.hero-eyebrow::after{
+  content:'';flex:1;height:1px;background:var(--border-mid);max-width:80px;
+}
+.hero-title{
+  font-family:var(--font-d);font-size:clamp(1rem,2.5vw,1.5rem);
+  font-weight:400;letter-spacing:.15em;color:var(--text-muted);
+  text-transform:uppercase;margin-bottom:.5rem;
+}
+.hero-canto{
+  font-family:var(--font-d);font-size:clamp(4rem,10vw,9rem);
+  font-weight:900;color:var(--text);line-height:.9;letter-spacing:-.02em;
+  margin-bottom:.5rem;
+}
+.hero-canto .num{color:var(--gold)}
+.hero-author{
+  font-family:var(--font-d);font-size:clamp(.8rem,1.5vw,1rem);
+  letter-spacing:.2em;color:var(--text-dim);text-transform:uppercase;margin-bottom:3rem;
+}
+.hero-verse{
+  font-size:clamp(1rem,2vw,1.3rem);font-style:italic;
+  color:var(--text-muted);max-width:600px;margin:0 auto 3rem;
+  line-height:1.6;
+  border-left:2px solid var(--crimson);padding-left:1.5rem;text-align:left;
+}
+.hero-nav-pills{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center}
+.pill{
+  font-family:var(--font-d);font-size:10px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--text-muted);
+  border:1px solid var(--border-mid);padding:.4rem 1rem;
+  text-decoration:none;transition:all .2s;
+}
+.pill:hover{border-color:var(--gold);color:var(--gold)}
+
+/* RIASSUNTO */
+.riassunto-grid{display:grid;grid-template-columns:1fr 380px;gap:4rem;align-items:start}
+.riassunto-text p{margin-bottom:1.4rem;color:var(--text);font-size:18px}
+.riassunto-text p:first-child::first-letter{
+  font-family:var(--font-d);font-size:4.5rem;font-weight:900;
+  float:left;line-height:.8;margin-right:.12em;margin-top:.08em;
+  color:var(--gold);
+}
+.riassunto-sidebar{position:sticky;top:calc(var(--nav-h) + 2rem)}
+.img-frame{
+  border:1px solid var(--border-mid);overflow:hidden;
+  position:relative;
+}
+.img-frame img{
+  width:100%;display:block;
+  filter:sepia(.4) contrast(1.1) brightness(.9);
+  transition:filter .4s;
+}
+.img-frame:hover img{filter:sepia(.2) contrast(1.05) brightness(.95)}
+.img-caption{
+  font-family:var(--font-d);font-size:10px;letter-spacing:.12em;
+  color:var(--text-dim);text-align:center;padding:.8rem;
+  background:var(--bg-raised);border-top:1px solid var(--border);
+  text-transform:uppercase;
+}
+
+/* TEMATICHE */
+.tematiche-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem}
+.tema-card{
+  background:var(--bg-raised);border:1px solid var(--border-mid);
+  padding:2rem;position:relative;
+  transition:border-color .2s,transform .2s;
+}
+.tema-card:hover{border-color:var(--gold);transform:translateY(-2px)}
+.tema-num{
+  font-family:var(--font-d);font-size:10px;letter-spacing:.15em;
+  color:var(--crimson);text-transform:uppercase;margin-bottom:1rem;
+}
+.tema-title{
+  font-family:var(--font-d);font-size:1.05rem;font-weight:600;
+  color:var(--text);margin-bottom:1rem;line-height:1.3;
+}
+.tema-text{font-size:16px;color:var(--text-muted);line-height:1.65}
+.tema-verse{
+  margin-top:1.2rem;padding-top:1.2rem;
+  border-top:1px solid var(--border);
+  font-size:14px;font-style:italic;color:var(--text-dim);
+}
+
+/* PERSONAGGI */
+.personaggi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(500px,1fr));gap:2rem}
+.personaggio{
+  background:var(--bg-raised);border:1px solid var(--border-mid);
+  display:grid;grid-template-columns:200px 1fr;
+  transition:border-color .25s;
+}
+.personaggio:hover{border-color:var(--gold)}
+.personaggio-img{
+  height:100%;min-height:260px;overflow:hidden;
+  filter:sepia(.5) contrast(1.1) brightness(.85);
+}
+.personaggio-img img{width:100%;height:100%;object-fit:cover;object-position:top}
+.personaggio-body{padding:1.8rem}
+.pers-name{
+  font-family:var(--font-d);font-size:1.15rem;font-weight:600;
+  color:var(--text);margin-bottom:.3rem;
+}
+.pers-role{
+  font-family:var(--font-d);font-size:9px;letter-spacing:.18em;
+  color:var(--crimson);text-transform:uppercase;margin-bottom:1rem;
+}
+.pers-table{width:100%;border-collapse:collapse;margin-bottom:1rem;font-size:14px}
+.pers-table td{
+  padding:.35rem 0;border-bottom:1px solid var(--border);
+  vertical-align:top;
+}
+.pers-table td:first-child{
+  color:var(--text-dim);font-family:var(--font-d);
+  font-size:9px;letter-spacing:.1em;text-transform:uppercase;
+  width:90px;padding-right:.5rem;
+}
+.pers-text{font-size:15px;color:var(--text-muted);line-height:1.6}
+
+/* TESTO */
+#testo{padding-top:var(--nav-h);min-height:100vh}
+.testo-header{
+  padding:3rem 2.5rem 2rem;
+  max-width:1400px;margin:0 auto;
+}
+.testo-layout{
+  display:grid;
+  grid-template-columns:42% 58%;
+  align-items:start;
+  max-width:1400px;margin:0 auto;
+}
+.video-panel{
+  position:sticky;
+  top:var(--nav-h);
+  height:calc(100vh - var(--nav-h));
+  padding:2rem 1.5rem 2rem 2.5rem;
+  display:flex;flex-direction:column;gap:1.5rem;
+  border-right:1px solid var(--border);
+  overflow:hidden;
+}
+.video-label{
+  font-family:var(--font-d);font-size:10px;letter-spacing:.2em;
+  color:var(--crimson);text-transform:uppercase;
+}
+.video-wrap{
+  flex:1;display:flex;align-items:center;min-height:0;
+}
+.video-wrap video{
+  width:100%;max-height:100%;
+  border:1px solid var(--border-mid);
+  background:#000;
+}
+.video-note{
+  font-size:14px;color:var(--text-dim);font-style:italic;text-align:center;
+}
+
+.terzine-panel{
+  padding:2rem 2.5rem 2rem 2rem;
+  overflow-y:auto;
+}
+.sezione-testo{margin-bottom:3.5rem}
+.sezione-header{
+  display:flex;align-items:baseline;gap:1rem;
+  margin-bottom:1.5rem;
+  padding-bottom:1rem;
+  border-bottom:1px solid var(--border);
+}
+.sezione-vv{
+  font-family:var(--font-d);font-size:10px;letter-spacing:.18em;
+  color:var(--crimson);text-transform:uppercase;
+}
+.sezione-titolo{
+  font-family:var(--font-d);font-size:.95rem;font-weight:600;
+  color:var(--text);
+}
+.terzina{
+  margin-bottom:1.4rem;
+  padding-left:1.5rem;
+  border-left:2px solid var(--border);
+  transition:border-color .2s;
+}
+.terzina:hover{border-left-color:var(--gold)}
+.verso{
+  font-size:17px;font-style:italic;line-height:1.75;
+  color:var(--text);display:block;
+}
+.verso .vnum{
+  font-family:var(--font-d);font-size:9px;letter-spacing:.1em;
+  color:var(--text-dim);margin-right:.6em;font-style:normal;
+}
+.commento-inline{
+  margin-top:1rem;padding:1rem 1.2rem;
+  background:var(--bg-raised);border-left:3px solid var(--crimson);
+  font-size:15px;color:var(--text-muted);line-height:1.65;
+}
+.commento-inline strong{
+  font-family:var(--font-d);font-size:9px;letter-spacing:.15em;
+  color:var(--gold);text-transform:uppercase;display:block;margin-bottom:.4rem;
+}
+
+/* COMMENTO */
+.commento-accordions{display:flex;flex-direction:column;gap:1px}
+.acc{border:1px solid var(--border-mid);overflow:hidden;margin-bottom:.5rem}
+.acc-btn{
+  width:100%;background:var(--bg-raised);border:none;cursor:pointer;
+  padding:1.25rem 1.5rem;text-align:left;
+  display:flex;align-items:center;justify-content:space-between;
+  transition:background .2s;
+}
+.acc-btn:hover{background:var(--bg-card)}
+.acc-vv{
+  font-family:var(--font-d);font-size:10px;letter-spacing:.18em;
+  color:var(--crimson);text-transform:uppercase;margin-right:.5rem;
+}
+.acc-title{
+  font-family:var(--font-d);font-size:.95rem;font-weight:600;color:var(--text);flex:1;
+}
+.acc-arr{
+  font-size:20px;color:var(--gold);transition:transform .3s;line-height:1;
+}
+.acc-btn.open .acc-arr{transform:rotate(180deg)}
+.acc-body{
+  display:none;padding:1.5rem;
+  border-top:1px solid var(--border);
+}
+.acc-body.open{display:block}
+.analisi-block{margin-bottom:1.8rem}
+.analisi-block:last-child{margin-bottom:0}
+.analisi-label{
+  font-family:var(--font-d);font-size:9px;letter-spacing:.2em;
+  color:var(--gold);text-transform:uppercase;margin-bottom:.6rem;
+  border-bottom:1px solid var(--border);padding-bottom:.4rem;
+}
+.analisi-text{font-size:16px;color:var(--text-muted);line-height:1.65}
+.analisi-text p{margin-bottom:.8rem}
+.analisi-text p:last-child{margin-bottom:0}
+.figura{
+  display:inline-block;
+  font-family:var(--font-d);font-size:9px;letter-spacing:.1em;
+  color:var(--crimson-mid);text-transform:uppercase;
+  border:1px solid var(--crimson);padding:.1rem .4rem;margin:.2rem .1rem;
+  vertical-align:middle;
+}
+
+/* CRITICA */
+.critica-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:1.5rem}
+.critica-card{
+  background:var(--bg-raised);border:1px solid var(--border-mid);
+  padding:2rem;position:relative;
+}
+.critica-card::before{
+  content:'«';
+  position:absolute;top:.5rem;left:1rem;
+  font-family:var(--font-d);font-size:5rem;font-weight:900;
+  color:rgba(201,162,39,.08);line-height:1;pointer-events:none;
+}
+.critica-nome{
+  font-family:var(--font-d);font-size:1rem;font-weight:600;
+  color:var(--text);margin-bottom:.25rem;
+}
+.critica-info{
+  font-family:var(--font-d);font-size:9px;letter-spacing:.12em;
+  color:var(--crimson);text-transform:uppercase;margin-bottom:1rem;
+}
+.critica-text{font-size:16px;color:var(--text-muted);line-height:1.65}
+.critica-posizione{
+  margin-top:1rem;padding:.6rem 1rem;
+  background:rgba(139,26,26,.12);border-left:2px solid var(--crimson);
+  font-size:14px;color:var(--text-muted);font-style:italic;
+}
+
+/* FONTI */
+.fonti-list{list-style:none;display:flex;flex-direction:column;gap:.75rem}
+.fonte-item{
+  display:grid;grid-template-columns:40px 1fr;gap:1rem;
+  padding:1.2rem 1.5rem;
+  background:var(--bg-raised);border:1px solid var(--border);
+  align-items:start;
+  transition:border-color .2s;
+}
+.fonte-item:hover{border-color:var(--gold)}
+.fonte-num{
+  font-family:var(--font-d);font-size:.9rem;color:var(--gold);
+  font-weight:600;
+}
+.fonte-text{font-size:16px;color:var(--text-muted);line-height:1.5}
+.fonte-text em{color:var(--text);font-style:italic}
+.fonte-text strong{color:var(--text-dim);font-family:var(--font-d);font-size:12px;letter-spacing:.08em}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .riassunto-grid{grid-template-columns:1fr;gap:2.5rem}
+  .riassunto-sidebar{position:static}
+  .personaggi-grid{grid-template-columns:1fr}
+  .testo-layout{grid-template-columns:1fr;align-items:start}
+  .video-panel{position:static;height:auto;border-right:none;border-bottom:1px solid var(--border);padding:2rem}
+  .video-wrap{height:300px}
+}
+@media(max-width:680px){
+  .nav-logo{display:none}
+  .personaggio{grid-template-columns:1fr}
+  .personaggio-img{min-height:180px}
+  .tematiche-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+<div class="nav-inner">
+  <a class="nav-logo" href="#home">Inf. · XXXIII</a>
+  <div class="nav-links">
+    <a href="#home">Home</a>
+    <a href="#riassunto">Riassunto</a>
+    <a href="#tematiche">Tematiche</a>
+    <a href="#personaggi">Personaggi</a>
+    <a href="#testo">Testo</a>
+    <a href="#commento">Commento</a>
+    <a href="#critica">Voci della Critica</a>
+    <a href="#fonti">Fonti</a>
+  </div>
+</div>
+</nav>
+
+<!-- HOME -->
+<section id="home">
+<div class="hero-bg"></div>
+<div class="hero-roman">XXXIII</div>
+<div class="hero-content">
+  <div class="hero-eyebrow">La Divina Commedia</div>
+  <div class="hero-title">Inferno</div>
+  <div class="hero-canto">Canto <span class="num">XXXIII</span></div>
+  <div class="hero-author">Dante Alighieri</div>
+  <p class="hero-verse">
+    «La bocca sollevò dal fiero pasto<br>
+    quel peccator, forbiendola a' capelli<br>
+    del capo ch'elli avea di retro guasto.»
+  </p>
+  <div class="hero-nav-pills">
+    <a class="pill" href="#riassunto">Riassunto</a>
+    <a class="pill" href="#tematiche">Tematiche</a>
+    <a class="pill" href="#personaggi">Personaggi</a>
+    <a class="pill" href="#testo">Testo</a>
+    <a class="pill" href="#commento">Commento</a>
+    <a class="pill" href="#critica">Voci della Critica</a>
+    <a class="pill" href="#fonti">Fonti</a>
+  </div>
+</div>
+</section>
+
+<!-- RIASSUNTO -->
+<section id="riassunto">
+<div class="container">
+  <p class="sec-label">Sezione I</p>
+  <h2 class="sec-title">Riassunto</h2>
+  <div class="divider"></div>
+  <div class="riassunto-grid">
+    <div class="riassunto-text">
+      <p>Nel trentatreesimo canto dell'Inferno Dante affronta uno degli episodi più tragici e drammatici di tutta la Commedia: quello del conte Ugolino della Gherardesca, condannato tra i traditori nella gelida regione di Cocito. Il poeta e Virgilio si trovano nell'Antenora, la zona dove sono puniti coloro che tradirono la patria o il proprio partito politico. Qui Dante vede una scena terribile: un dannato rode con ferocia il cranio di un altro peccatore, quasi come una bestia.</p>
+      <p>Colpito dall'orrore di quella visione, Dante gli domanda chi sia e quale odio così profondo lo spinga a tormentare eternamente il compagno di pena. Il dannato allora solleva la bocca insanguinata dal capo che stava divorando e inizia a raccontare la sua storia. Egli rivela di essere il conte Ugolino della Gherardesca, potente signore pisano coinvolto nelle lotte politiche della città, mentre il peccatore che egli tormenta è l'arcivescovo Ruggieri degli Ubaldini, suo nemico e traditore.</p>
+      <p>Ugolino racconta che, dopo essere stato imprigionato nella torre della Muda insieme ai figli Gaddo e Uguccione e ai nipoti Anselmuccio e Brigata, trascorsero molti mesi di prigionia. La torre, destinata a diventare simbolo di fame e disperazione, sarebbe poi stata chiamata «torre della fame». Durante la detenzione il conte ebbe un sogno terribile, che si rivelò un presagio della tragedia imminente: egli vedeva l'arcivescovo Ruggieri comportarsi come un cacciatore spietato che guidava una muta di cani famelici contro un lupo e i suoi piccoli. Il lupo rappresentava Ugolino stesso, mentre i lupacchiotti erano i figli e i nipoti.</p>
+      <p>Al risveglio Ugolino sente i bambini piangere nel sonno e chiedere il pane. Poco dopo ode un rumore terribile: l'uscio della torre viene inchiodato. In quell'istante egli comprende immediatamente la verità: i carcerieri hanno deciso di lasciarli morire di fame. Inizia così una lenta e atroce agonia. Ugolino, disperato, si morde le mani per il dolore; i figli, credendo che lo faccia per la fame, si offrono perfino di sacrificare il proprio corpo per salvarlo.</p>
+      <p>I giorni passano lentamente. A poco a poco i ragazzi iniziano a morire uno dopo l'altro. Il primo a cadere è il piccolo Gaddo, che si getta ai piedi del padre chiedendo aiuto prima di spirare. Rimasto solo, ormai quasi cieco, il conte continua per due giorni a chiamare i figli morti, brancolando nel buio. Alla fine anche lui muore di fame. Il verso conclusivo del racconto — «Poscia, più che 'l dolor, poté 'l digiuno» — è tra i più celebri e discussi della Divina Commedia, volutamente ambiguo.</p>
+      <p>Dante, profondamente colpito dalla tragedia, esplode in una violenta invettiva contro Pisa, definita «vituperio delle genti», auspicando che il fiume Arno sommerga completamente la città. Poi i poeti proseguono verso la Tolomea, dove sono puniti i traditori degli ospiti. I dannati giacciono supini nel ghiaccio e le lacrime si congelano formando visiere di cristallo che impediscono persino il conforto del pianto.</p>
+      <p>In questo luogo un dannato implora Dante di liberargli gli occhi dal ghiaccio. In cambio della promessa di aiuto rivela la sua identità: è frate Alberigo dei Manfredi. Dante resta stupito, perché sa che il frate è ancora vivo sulla Terra. Il dannato spiega una caratteristica terribile della Tolomea: quando qualcuno tradisce i propri ospiti, la sua anima precipita immediatamente all'Inferno, mentre sulla Terra il corpo continua a vivere posseduto da un demonio. Rivela inoltre che vicino a lui si trova Branca Doria, nobile genovese ancora vivo nel 1300. Dopo aver ottenuto le informazioni desiderate, Dante decide di non mantenere la promessa. Il canto si chiude con un'invettiva contro Genova e i suoi abitanti.</p>
+    </div>
+    <div class="riassunto-sidebar">
+      <!-- Immagine: salvare come img/ugolino-dore.jpg
+           Cerca su Google Immagini: "Gustave Doré Ugolino Dante Inferno"
+           oppure scarica direttamente da Wikimedia Commons cercando "Doré Ugolino" -->
+      <div class="img-frame">
+        <img src="img/ugolino-dore.jpg" alt="Gustave Doré – Il conte Ugolino nella torre della fame" onerror="this.parentElement.style.background='#110e08';this.style.display='none'">
+        <div class="img-caption">G. Doré — Il conte Ugolino nella torre, 1861</div>
+      </div>
+      <div style="margin-top:1.5rem;padding:1.2rem 1.5rem;background:var(--bg-raised);border:1px solid var(--border-mid)">
+        <p class="sec-label" style="margin-bottom:.5rem">Dove ci troviamo</p>
+        <p style="font-size:14px;color:var(--text-muted);line-height:1.6">
+          <strong style="color:var(--text)">IX Cerchio — Cocito</strong><br>
+          Zona I · Caina (traditori dei parenti)<br>
+          Zona II · <strong style="color:var(--gold)">Antenora</strong> (traditori della patria)<br>
+          Zona III · <strong style="color:var(--gold)">Tolomea</strong> (traditori degli ospiti)<br>
+          Zona IV · Giudecca (traditori dei benefattori)
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- TEMATICHE -->
+<section id="tematiche">
+<div class="container">
+  <p class="sec-label">Sezione II</p>
+  <h2 class="sec-title">Tematiche</h2>
+  <div class="divider"></div>
+  <div class="tematiche-grid">
+
+    <div class="tema-card">
+      <p class="tema-num">Tema I</p>
+      <h3 class="tema-title">Il tradimento della patria</h3>
+      <p class="tema-text">La tematica del tradimento della patria, punita nell'Antenora, è presente nel canto, ma il conte Ugolino si presenta più come il tradito che come il traditore. Le sue azioni politiche — la cessione di castelli a Firenze e Lucca — sono riportate solo come una voce, e il suo peccato rimane volutamente nell'ombra. Per un'ingegnosissima combinazione Ugolino si trova legato in eterno proprio all'arcivescovo Ruggieri, che in vita lo ha tradito in maniera vile: fidandosi di lui era tornato a Pisa, e l'arcivescovo lo aveva fatto immediatamente imprigionare. Il vero tema, quindi, non è il tradimento del conte, ma quello di Ruggieri, la cui testa è il «fiero pasto» di Ugolino: pena per contrappasso, poiché l'arcivescovo lo aveva affamato.</p>
+      <div class="tema-verse">«Ruggieri diventa il "fiero pasto" di Ugolino, che è morto di fame a causa dell'arcivescovo.»</div>
+    </div>
+
+    <div class="tema-card">
+      <p class="tema-num">Tema II</p>
+      <h3 class="tema-title">Il dolore paterno</h3>
+      <p class="tema-text">La tematica del dolore paterno è la più toccante del canto. Ugolino è un padre disperato che non ha potuto aiutare i suoi figli e nipoti, costretti a morire di fame innocenti. Ha dovuto assistere impotente alla morte dei quattro giovani, ripercorrendo le tappe dolorose di quell'agonia: dallo sguardo smarrito di Anselmuccio alla richiesta d'aiuto di Gaddo — «Padre mio, ché non m'aiuti?» — parole paragonate a quelle di Cristo crocifisso rivolte al Padre. Ugolino si distingue dagli altri dannati perché introduce una nota di calda umanità tra gli esseri pietrificati di Cocito. L'amore e la tenerezza che mostra per i figli abbellisce la sua figura e la riscatta dall'orrore infernale. Prova nei confronti di Ruggieri un odio inestinguibile: anche avendolo sotto i denti, rimane insoddisfatto, perché non c'è vendetta che possa saziare il suo infinito dolore.</p>
+      <div class="tema-verse">«Padre mio, ché non m'aiuti?» — Gaddo, v. 69</div>
+    </div>
+
+    <div class="tema-card">
+      <p class="tema-num">Tema III</p>
+      <h3 class="tema-title">La fame come simbolo di estrema sofferenza</h3>
+      <p class="tema-text">La tragedia della morte per fame è l'altro tema straziante del canto, che si preannuncia nel sogno di Ugolino — dove padre e ragazzi vengono sbranati — e nel sogno dei giovani, dove essi non possono mangiare. Ugolino si morderà le mani per la disperazione; i figli, pensando ch'egli voglia mangiarsi dalla fame, si offriranno di essere a loro volta mangiati. Nell'Inferno, Ugolino mastica per l'eternità la nuca di Ruggieri, che, affamatore di Ugolino e dei suoi cari, è adesso condannato a sfamare chi aveva affamato. Il celebre verso finale — «Poscia, più che 'l dolor, poté 'l digiuno» — è volutamente ambiguo: alcuni lo leggono come semplice morte per inedia, altri come confessione di cannibalismo. Ricerche scientifiche sui resti ritrovati a Pisa nel 1928 sembrano tuttavia escludere questa seconda ipotesi.</p>
+      <div class="tema-verse">«Poscia, più che 'l dolor, poté 'l digiuno» — v. 75</div>
+    </div>
+
+    <div class="tema-card">
+      <p class="tema-num">Tema IV</p>
+      <h3 class="tema-title">La punizione divina e la vendetta umana</h3>
+      <p class="tema-text">Il ghiaccio di Cocito simboleggia la freddezza del cuore dei traditori e la punizione divina. Ruggieri, però, non si limita a essere conficcato nel ghiaccio: subisce anche una punizione aggiuntiva — una vendetta umana — poiché la sua nuca è rosa per l'eternità dalla sua vittima. La sua disumanità è resa ancora più inaccettabile dal fatto che egli era arcivescovo, pastore d'anime, eppure non ha avuto rispetto per la vita umana, tantomeno per quella di giovani innocenti. La doppia condanna — divina e umana — rispecchia la duplice dimensione della giustizia dantesca: la legge di Dio e il diritto alla memoria delle vittime.</p>
+      <div class="tema-verse">Il ghiaccio = freddezza del cuore · Il morso = vendetta eterna</div>
+    </div>
+
+    <div class="tema-card">
+      <p class="tema-num">Tema V</p>
+      <h3 class="tema-title">La politica come causa di violenza</h3>
+      <p class="tema-text">Il tema politico è presente nella potente invettiva contro Pisa, dove Dante paragona la città all'antica Tebe, sede degli orrori della stirpe di Cadmo raccontati nella Tebaide di Stazio. Pisa viene vista come una città incapace di pace sociale, che impunita causa solo dolore. Vi è poi il richiamo alle lotte di fazione tra guelfi e ghibellini: Ugolino e Ruggieri rappresentano le due istituzioni contrapposte dell'epoca — l'Impero nella persona del conte, la Chiesa nella persona dell'arcivescovo. Il canto si chiude con un'invettiva contro Genova, dove i Genovesi vengono presentati come uomini senza onore, colpevoli di aver prodotto traditori come Branca Doria. I toni, però, sono più sommessi: Dante sembra ormai stremato di tanti severi rimproveri.</p>
+      <div class="tema-verse">«Ahi Pisa, vituperio de le genti / del bel paese là dove 'l sì suona» — vv. 79-80</div>
+    </div>
+
+    <div class="tema-card">
+      <p class="tema-num">Tema VI</p>
+      <h3 class="tema-title">Il tradimento dell'ospitalità</h3>
+      <p class="tema-text">Nell'ultima parte del canto è presente la tematica del tradimento dell'ospitalità, incarnata da frate Alberigo dei Manfredi e da Branca Doria. Il primo invitò due suoi parenti a un banchetto fingendo riconciliazione e, al segnale «Vengano le frutta!», li fece assassinare. Il secondo fece uccidere il suocero Michele Zanche durante un banchetto. Questo peccato è così grave che le anime precipitano nel Cocito prima ancora della morte fisica: i corpi, ancora vivi sulla Terra, sono abitati da un demonio. Dante, avendo ottenuto le informazioni da Alberigo, decide di non liberargli gli occhi dal ghiaccio: verso i traditori degli ospiti la cortesia è viltà, la villania è giustizia.</p>
+      <div class="tema-verse">«e cortesia fu lui esser villano» — v. 150</div>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- PERSONAGGI -->
+<section id="personaggi">
+<div class="container">
+  <p class="sec-label">Sezione III</p>
+  <h2 class="sec-title">Personaggi</h2>
+  <div class="divider"></div>
+  <div class="personaggi-grid">
+
+    <div class="personaggio">
+      <!-- img/ugolino-ritr.jpg — cerca "Ugolino della Gherardesca portrait" o usa una delle illustrazioni Doré -->
+      <div class="personaggio-img">
+        <img src="img/ugolino-ritr.jpg" alt="Ugolino della Gherardesca" onerror="this.parentElement.style.background='#1a1008'">
+      </div>
+      <div class="personaggio-body">
+        <p class="pers-name">Ugolino della Gherardesca</p>
+        <p class="pers-role">Conte · Traditore della patria · Antenora</p>
+        <table class="pers-table">
+          <tr><td>Nato</td><td>Pisa, ca. 1220</td></tr>
+          <tr><td>Morto</td><td>1289, nella Torre della Muda</td></tr>
+          <tr><td>Pena</td><td>Immerso nel ghiaccio, rode il cranio di Ruggieri</td></tr>
+          <tr><td>Contrappasso</td><td>Afframato, ora «affama» il suo affamatore</td></tr>
+        </table>
+        <p class="pers-text">Nobile pisano, ghibellino per nascita, si avvicinò al partito guelfo dei Visconti. Dopo la sconfitta pisana nella battaglia della Meloria (1284), ottenne pieni poteri come Capitano del Popolo. Alleatosi poi con l'arcivescovo Ruggieri degli Ubaldini, fu da lui tradito nel 1288 e imprigionato nella torre della Muda insieme a due figli e due nipoti, dove morì di fame. Nel canto Dante ne esalta soprattutto la dimensione di padre straziato, riscattando la sua figura umana dall'orrore della condanna infernale.</p>
+      </div>
+    </div>
+
+    <div class="personaggio">
+      <!-- img/ruggieri.jpg — cerca "arcivescovo Ruggieri Ubaldini Pisa" -->
+      <div class="personaggio-img">
+        <img src="img/ruggieri.jpg" alt="Arcivescovo Ruggieri degli Ubaldini" onerror="this.parentElement.style.background='#1a1008'">
+      </div>
+      <div class="personaggio-body">
+        <p class="pers-name">Ruggieri degli Ubaldini</p>
+        <p class="pers-role">Arcivescovo di Pisa · Traditore · Antenora</p>
+        <table class="pers-table">
+          <tr><td>Ruolo</td><td>Arcivescovo di Pisa (†1295)</td></tr>
+          <tr><td>Pena</td><td>Il cranio eternamente roso da Ugolino</td></tr>
+          <tr><td>Contrappasso</td><td>Affamatore, ora è il «cibo» dell'affamato</td></tr>
+        </table>
+        <p class="pers-text">Guida della nobiltà ghibellina pisana, orchestrò nel 1288 la cacciata di Nino Visconti e fece imprigionare Ugolino, al quale aveva promesso protezione. Nella finzione poetica Ruggieri è quasi assente come voce: è ridotto a cranio muto, «fiero pasto» dell'eterno odio della sua vittima. La sua disumanità è aggravata dalla sua condizione di pastore d'anime: avrebbe dovuto tutelare la vita, e invece la ha soppressa con calcolo freddo.</p>
+      </div>
+    </div>
+
+    <div class="personaggio">
+      <!-- img/alberigo.jpg — cerca "Doré frate Alberigo Inferno Tolomea" -->
+      <div class="personaggio-img">
+        <img src="img/alberigo.jpg" alt="Frate Alberigo dei Manfredi" onerror="this.parentElement.style.background='#1a1008'">
+      </div>
+      <div class="personaggio-body">
+        <p class="pers-name">Frate Alberigo dei Manfredi</p>
+        <p class="pers-role">Frate Gaudente · Traditore degli ospiti · Tolomea</p>
+        <table class="pers-table">
+          <tr><td>Nato</td><td>Faenza, ca. 1240</td></tr>
+          <tr><td>Morto</td><td>ca. 1309 (ma l'anima è già all'Inferno)</td></tr>
+          <tr><td>Pena</td><td>Supino nel ghiaccio, lacrime congelate sugli occhi</td></tr>
+          <tr><td>Il segnale</td><td>«Vengano le frutta!» — ordine ai sicari</td></tr>
+        </table>
+        <p class="pers-text">Membro dell'ordine dei Frati Gaudenti, nel 1285 invitò a banchetto i parenti Manfredo e Alberghetto, fingendo riconciliazione. Al segnale convenuto, i sicari nascosti trucidarono gli ospiti. Questo episodio diede origine al detto «ricevere la frutta di frate Alberigo». Si presenta a Dante con ironica rassegnazione: «che qui riprendo dattero per figo» — paga una pena (il dattero, più pregiato) molto più amara del vantaggio ottenuto (il fico).</p>
+      </div>
+    </div>
+
+    <div class="personaggio">
+      <!-- img/branca.jpg — cerca "Branca Doria Genova ghibellini" -->
+      <div class="personaggio-img">
+        <img src="img/branca.jpg" alt="Branca Doria" onerror="this.parentElement.style.background='#1a1008'">
+      </div>
+      <div class="personaggio-body">
+        <p class="pers-name">Branca Doria</p>
+        <p class="pers-role">Nobile Genovese · Traditore degli ospiti · Tolomea</p>
+        <table class="pers-table">
+          <tr><td>Nato</td><td>Genova, ca. 1233</td></tr>
+          <tr><td>Morto</td><td>1325 (ma l'anima è già all'Inferno dal 1275)</td></tr>
+          <tr><td>Delitto</td><td>Assassinio del suocero Michele Zanche a un banchetto</td></tr>
+          <tr><td>Pena</td><td>Tolomea, nel ghiaccio, occhi sigillati dal gelo</td></tr>
+        </table>
+        <p class="pers-text">Esponente della potente famiglia ghibellina dei Doria, nel 1275 invitò il suocero Michele Zanche, barone del Giudicato di Logudoro in Sardegna, a un banchetto conviviale. A un segnale convenuto, Branca e i suoi complici lo uccisero e lo fecero a pezzi, per usurparne i possedimenti sardi. Dante stupisce nel trovarlo nella Tolomea: nel 1300 Doria è ancora vivo a Genova, dove morirà solo nel 1325. Il suo corpo, però, è da anni governato da un demonio.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- TESTO -->
+<section id="testo" style="padding-top:var(--nav-h);padding-bottom:0;min-height:100vh">
+<div class="testo-header">
+  <p class="sec-label">Sezione IV</p>
+  <h2 class="sec-title">Testo e Commento</h2>
+  <div class="divider"></div>
+</div>
+<div class="testo-layout">
+
+  <!-- VIDEO PANEL (sticky) -->
+  <div class="video-panel">
+    <p class="video-label">Lettura del canto</p>
+    <div class="video-wrap">
+      <!--
+        ISTRUZIONI VIDEO:
+        1. Rinomina il tuo video "video.mp4"
+        2. Caricalo nella root del repository GitHub (stessa cartella di index.html)
+        3. Il video apparirà automaticamente qui
+      -->
+      <video controls poster="img/video-poster.jpg">
+        <source src="video.mp4" type="video/mp4">
+        <p style="color:var(--text-muted);font-size:14px;padding:1rem">
+          Il video apparirà qui una volta caricato il file <code>video.mp4</code> nella root del repository.
+        </p>
+      </video>
+    </div>
+    <p class="video-note">Le terzine e il commento scorrono accanto al video</p>
+  </div>
+
+  <!-- TERZINE + COMMENTO (scrollable) -->
+  <div class="terzine-panel">
+
+    <!-- SEZIONE 1: vv. 1-24 -->
+    <div class="sezione-testo">
+      <div class="sezione-header">
+        <span class="sezione-vv">vv. 1–24</span>
+        <span class="sezione-titolo">Ugolino si presenta</span>
+      </div>
+      <div class="terzina">
+        <span class="verso"><span class="vnum">1</span>La bocca sollevò dal fiero pasto</span>
+        <span class="verso"><span class="vnum">2</span>quel peccator, forbiendola a' capelli</span>
+        <span class="verso"><span class="vnum">3</span>del capo ch'elli avea di retro guasto.</span>
+      </div>
+      <div class="terzina">
+        <span class="verso"><span class="vnum">4</span>Poi cominciò: «Tu vuo' ch'io rinovelli</span>
+        <span class="verso"><span class="vnum">5</span>disperato dolor che 'l cor mi preme</span>
+        <span class="verso"><span class="vnum">6</span>già pur pensando, pria ch'io ne favelli.</span>
+      </div>
+      <div class="terzina">
+        <span class="verso"><span class="vnum">7</span>Ma se le mie parole esser dien semenza</span>
+        <span class="verso"><span class="vnum">8</span>che frutti infamia al traditor ch'i' rodo,</span>
+        <span class="verso"><span class="vnum">9</span>parlare e lagrimar vedrai insieme.</span>
+      </div>
+      <div class="terzina">
+        <span class="verso"><span class="vnum">10</span>Io non so chi tu se' né per che modo</span>
+        <span class="verso"><span class="vnum">11</span>venuto se' qua giù; ma fiorentino</span>
+        <span class="verso"><span class="vnum">12</span>mi sembri veramente quand'io t'odo.</span>
+      </div>
+      <div class="terzina">
+        <span class="verso"><span class="vnum">13</span>Tu de' saper ch'i' fui conte Ugolino,</span>
+        <span class="verso"><span class="vnum">14</span>e questi è l'arcivescovo Ruggieri:</span>
+        <span class="verso"><span class="vnum">15</span>or ti dirò perché i' son tal vicino.</span>
+      </div>
+      <div class="terzina">
+        <span class="verso"><span class="vnum">16</span>Che per l'effetto de' suo' mai pensieri,</span>
+        <span class="verso"><span class="vnum">17</span>fidandomi di lui, io fossi preso</span>
+        <span class="verso"><span class="vnum">18</span>e poscia morto, dir non è mestieri;</span>
+      </div>
+      <div class="terzina">
+        <span class="verso"><span class="vnum">19</span>però quel che non puoi avere inteso,</span>
+        <span class="verso"><span class="vnum">20</span>cioè come la morte mia fu cruda,</span>
+        <span class="verso"><span class="vnum">21</span>udirai, e saprai s'e' m'ha offeso.</span>
+      </div>
+      <div class="terzina">
+        <span class="verso"><span class="vnum">22</span>Breve pertugio dentro da la Muda,</span>
+        <span class="verso"><span class="vnum">23</span>la qual per me ha 'l titol de la fame,</span>
+        <span class="verso"><span class="vnum">24</span>e che conviene ancor ch'altrui si chiuda,</span>
+      </div>
+      <div class="commento-inline">
+        <strong>Contenuto</strong>
+        La scena si apre con un movimento di brutale concretezza: il peccatore — Ugolino — solleva la bocca dal suo pasto feroce (il cranio di Ruggieri) e la pulisce usando i capelli della testa devastata. Riconosciuto il toscano Dante, si presenta come conte Ugolino e indica il suo eterno carnefice-compagno: l'arcivescovo Ruggieri. Dichiara di non voler soffermarsi sul tradimento politico subito, già noto a tutti, ma di voler rivelare ciò che è rimasto segreto: la crudeltà della sua morte dentro la Torre della Muda, ribattezzata «torre della fame».
+      </div>
+    </div>
+
+    <!-- SEZIONE 2: vv. 25-48 -->
+    <div class="sezione-testo">
+      <div class="sezione-header">
+        <span class="sezione-vv">vv. 25–48</span>
+        <span class="sezione-titolo">Il sogno premonitore</span>
+      </div>
+      <div class="terzina">
+        <span class="verso"><span class="vnum">25</span>m'avea mostrato per lo suo forame,</span>
+        <span class="verso"><span class="vnum">26</span>più lune già, quand'io feci 'l mal sonno</span>
+        <span class="verso"><span class="vnum">27</span>che del futuro mi squarciò 'l velame.</span>
+      </div>
+      <div class="terzina">
+        <span class="verso"><span class="vnum">28</span>Questi pareva a me maestro e donno,</span>
+        <span class="verso"><span class="vnum">29</span>cacciando il lupo e 'lupicini al monte</span>
+        <span class="verso"><span class="vnum">30</span>per che i Pisan veder Lucca non ponno.</span>
+      </div>
+      <div class="terzina">
+        <span class="verso"><span class="vnum">31</span>Con cagne magre, studiose e conte</span>
+        <span class="verso"><span class="vnum">32</span>Gualandi con Sismondi e con Lanfranchi</span>
+        <span class="verso"><span class="vnum">33</span>s'avea messi dinanzi da la fronte.</span>
+      </div>
+      <div class="terzina">
+        <span class="verso"><span class="vnum">34</span>In picciol corso mi parieno stanchi</span>
+        <span class="verso"><span class="vnum">35</span>lo padre e ' figli, e con l'agute scane</span>
+        <span class="verso"><span class="vnum">36</span>mi parea lor veder fender li fianchi.</span>
+      </div>
+      <div class="terzina">
+        <span class="verso"><span class="vnum">37</span>Quando fui desto innanzi la dimane,</span>
+        <span class="verso"><span class="vnum">38</span>pianger senti' fra 'l sonno i miei figliuoli</span>
+        <span class="verso"><span class="vnum">39</span>ch'eran con meco, e dimandar del pane.</span>
+      </div>
+      <div class="terzina">
+        <span class="verso"><span class="vnum">40</span>Ben se' crudel, se tu già non ti duoli</span>
+        <span class="verso"><span class="vnum">41</span>pensando ciò che 'l mio cor s'annunziava;</span>
+        <span class="verso"><span class="vnum">42</span>e se non piangi, di che pianger suoli?</span>
+      </div>
+      <div class="terzina">
+        <span class="verso"><span class="vnum">43</span>Già eran desti, e l'ora s'appressava</span>
+        <span class="verso"><span class="vnum">44</span>che 'l cibo ne solea essere addotto,</span>
+        <span class="verso"><span class="vnum">45</span>e per suo sogno ciascun dubitava;</span>
+      </div>
+      <div class="terzina">
+        <span class="verso"><span class="vnum">46</span>e io senti' chiavar l'uscio di sotto</span>
+        <span class="verso"><span class="vnum">47</span>a l'orribil torre; ond'io guardai</span>
+        <span class="verso"><span class="vnum">48</span>nel viso a' mie' figliuoi senza far motto.</span>
+      </div>
+      <div class="commento-inline">
+        <strong>Contenuto</strong>
+        Ugolino descrive il sogno premonitore: Ruggieri appariva come un cacciatore spietato che guidava le famiglie ghibelline (Gualandi, Sismondi, Lanfranchi) con cagne affamate — allegoria del popolo pisano inferocito — contro un lupo (Ugolino) e i suoi lupicini (i figli). Al risveglio sente i bambini piangere e chiedere pane. Cala poi il silenzio: tutti svegli, ognuno con il suo sogno premonitore, nessuno che parla. Poi il rumore terribile: l'uscio della torre viene chiodato. Ugolino guarda i figli senza far motto, paralizzato dall'angoscia.
+      </div>
+    </div>
+
+    <!-- SEZIONE 3: vv. 49-75 -->
+    <div class="sezione-testo">
+      <div class="sezione-header">
+        <span class="sezione-vv">vv. 49–75</span>
+        <span class="sezione-titolo">L'agonia nella torre</span>
+      </div>
+      <div class="terzina">
+        <span class="verso"><span class="vnum">49</span>Io non piangea, sì dentro impetrai:</span>
+        <span class="verso"><span class="vnum">50</span>piangevan elli; e Anselmuccio mio</span>
+        <span class="verso"><span class="vnum">51</span>disse: «Tu guardi sì, padre! che hai?».</span>
+      </div>
+      <div class="terzina">
+        <span class="verso"><span class="vnum">52</span>Perciò non lacrimai né rispuos'io</span>
+        <span class="verso"><span class="vnum">53</span>tutto quel giorno né la notte appresso,</span>
+        <span class="verso"><span class="vnum">54</span>infin che l'altro sol nel mondo uscìo.</span>
+      </div>
+      <div class="terzina">
+        <span class="verso"><span class="vnum">55</span>Come un poco di raggio si fu messo</span>
+        <span class="verso"><span class="vnum">56</span>nel doloroso carcere, e io scorsi</span>
+        <span class="verso"><span class="vnum">57</span>per quattro visi il mio aspetto stesso,</span>
+      </div>
+      <div class="terzina">
+        <span class="verso"><span class="vnum">58</span>ambo le man per lo dolor mi morsi;</span>
+        <span class="verso"><span class="vnum">59</span>ed ei, pensando ch'io 'l fessi per voglia</span>
+        <span class="verso"><span class="vnum">60</span>di manicar, di subito levorsi</span>
+      </div>
+      <div class="terzina">
+        <span class="verso"><span class="vnum">61</span>e disser: «Padre, assai ci fia men doglia</span>
+        <span class="verso"><span class="vnum">62</span>se tu mangi di noi: tu ne vestisti</span>
+        <span class="verso"><span class="vnum">63</span>queste misere carni, e tu le spoglia».</span>
+      </div>
+      <div class="terzina">
+        <span class="verso"><span class="vnum">64</span>Queta'mi allor per non farli più tristi;</span>
+        <span class="verso"><span class="vnum">65</span>lo dì e l'altro stemmo tutti muti;</span>
+        <span class="verso"><span class="vnum">66</span>ahi dura terra, perché non t'apristi?</span>
+      </div>
+      <div class="terzina">
+        <span class="verso"><span class="vnum">67</span>Poscia che fummo al quarto dì venuti,</span>
+        <span class="verso"><span class="vnum">68</span>Gaddo mi si gittò disteso a' piedi,</span>
+        <span class="verso"><span class="vnum">69</span>dicendo: «Padre mio, ché non mi aiuti?».</span>
+      </div>
+      <div class="terzina">
+        <span class="verso"><span class="vnum">70</span>Quivi morì; e come tu mi vedi,</span>
+        <span class="verso"><span class="vnum">71</span>vid'io cascar li tre ad uno ad uno</span>
+        <span class="verso"><span class="vnum">72</span>tra 'l quinto dì e 'l sesto; ond'io mi diedi,</span>
+      </div>
+      <div class="terzina">
+        <span class="verso"><span class="vnum">73</span>già cieco, a brancolar sovra ciascuno,</span>
+        <span class="verso"><span class="vnum">74</span>e due dì li chiamai, poi che fur morti.</span>
+        <span class="verso"><span class="vnum">75</span>Poscia, più che 'l dolor, poté 'l digiuno».</span>
+      </div>
+      <div class="commento-inline">
+        <strong>Contenuto</strong>
+        Ugolino era impietrito nell'animo al punto da non riuscire a piangere. Al secondo giorno, un raggio di sole rivela nei quattro visi dei figli il suo stesso aspetto smagrito: si morde le mani per il dolore. I ragazzi, fraintendendo il gesto, si alzano e offrono le proprie carni — in una scena paragonabile a un'eucaristia rovesciata. Al quarto giorno Gaddo muore ai piedi del padre invocandolo, in un'eco del grido di abbandono di Cristo. Gli altri tre cadono tra il quinto e il sesto giorno. Rimasto solo e cieco, Ugolino brancola sui corpi per due giorni, poi anche lui muore. Il verso finale è volutamente ambiguo.
+      </div>
+    </div>
+
+    <!-- SEZIONE 4: vv. 76-93 -->
+    <div class="sezione-testo">
+      <div class="sezione-header">
+        <span class="sezione-vv">vv. 76–93</span>
+        <span class="sezione-titolo">L'invettiva contro Pisa</span>
+      </div>
+      <div class="terzina">
+        <span class="verso"><span class="vnum">76</span>Quand'ebbe detto ciò, con li occhi torti</span>
+        <span class="verso"><span class="vnum">77</span>riprese 'l teschio misero co' denti,</span>
+        <span class="verso"><span class="vnum">78</span>che furo a l'osso, come d'un can, forti.</span>
+      </div>
+      <div class="terzina">
+        <span class="verso"><span class="vnum">79</span>Ahi Pisa, vituperio de le genti</span>
+        <span class="verso"><span class="vnum">80</span>del bel paese là dove 'l sì suona,</span>
+        <span class="verso"><span class="vnum">81</span>poi che i vicini a te punir son lenti,</span>
+      </div>
+      <div class="terzina">
+        <span class="verso"><span class="vnum">82</span>muovasi la Capraia e la Gorgona,</span>
+        <span class="verso"><span class="vnum">83</span>e faccian siepe ad Arno in su la foce,</span>
+        <span class="verso"><span class="vnum">84</span>sì ch'elli annieghi in te ogne persona!</span>
+      </div>
+      <div class="terzina">
+        <span class="verso"><span class="vnum">85</span>Che se 'l conte Ugolino aveva voce</span>
+        <span class="verso"><span class="vnum">86</span>d'aver tradita te de le castella,</span>
+        <span class="verso"><span class="vnum">87</span>non dovei tu i figliuoi porre a tal croce.</span>
+      </div>
+      <div class="terzina">
+        <span class="verso"><span class="vnum">88</span>Innocenti facea l'età novella,</span>
+        <span class="verso"><span class="vnum">89</span>novella Tebe, Uguiccione e 'l Brigata</span>
+        <span class="verso"><span class="vnum">90</span>e li altri due che 'l canto suso appella.</span>
+      </div>
+      <div class="commento-inline">
+        <strong>Contenuto</strong>
+        Terminato il racconto, Ugolino riprende con ferocia animale a mordere il cranio di Ruggieri. Dante esplode in una delle invettive più feroci della Commedia: definisce Pisa «vituperio delle genti» e auspica che le isole della Capraia e della Gorgona sbarrino la foce dell'Arno, allagando e sommergendo ogni abitante. Pur ammettendo che si diceva che il conte avesse ceduto castelli ai nemici, Dante giudica mostruoso che la vendetta abbia colpito i figli innocenti. Pisa diventa «novella Tebe» — la città maledetta dalla tragedia di Edipo —, condannata per aver lasciato morire di fame dei fanciulli.
+      </div>
+    </div>
+
+    <!-- SEZIONE 5: vv. 94-120 -->
+    <div class="sezione-testo">
+      <div class="sezione-header">
+        <span class="sezione-vv">vv. 94–120</span>
+        <span class="sezione-titolo">La Tolomea — Frate Alberigo</span>
+      </div>
+      <div class="terzina">
+        <span class="verso"><span class="vnum">94</span>Lo pianto stesso lì pianger non lascia,</span>
+        <span class="verso"><span class="vnum">95</span>e 'l duol che truova in su li occhi rintoppo,</span>
+        <span class="verso"><span class="vnum">96</span>si volge in entro a far crescer l'ambascia;</span>
+      </div>
+      <div class="terzina">
+        <span class="verso"><span class="vnum">97</span>ché le lagrime prime fanno groppo,</span>
+        <span class="verso"><span class="vnum">98</span>e sì come visiere di cristallo,</span>
+        <span class="verso"><span class="vnum">99</span>riempion sotto 'l ciglio tutto il coppo.</span>
+      </div>
+      <div class="terzina">
+        <span class="verso"><span class="vnum">115</span>Per ch'io a lui: «Se vuo' ch'i' ti sovvegna,</span>
+        <span class="verso"><span class="vnum">116</span>dimmi chi se', e s'io non ti disbrigo,</span>
+        <span class="verso"><span class="vnum">117</span>al fondo de la ghiaccia ir mi convegna».</span>
+      </div>
+      <div class="terzina">
+        <span class="verso"><span class="vnum">118</span>Rispuose adunque: «I' son frate Alberigo;</span>
+        <span class="verso"><span class="vnum">119</span>i' son quel da le frutta del mal orto,</span>
+        <span class="verso"><span class="vnum">120</span>che qui riprendo dattero per figo».</span>
+      </div>
+      <div class="commento-inline">
+        <strong>Contenuto</strong>
+        Nella Tolomea il paradosso si capovolge: il pianto stesso impedisce di piangere. Le prime lacrime si congelano sugli occhi formando «visiere di cristallo», raddoppiando il tormento poiché nemmeno lo sfogo è consentito. Un dannato implora Dante di liberargli gli occhi. In cambio rivela la propria identità: è frate Alberigo, che si presenta con amara ironia — «riprendo dattero per figo» — sapendo di pagare con una moneta ben più cara di quella guadagnata con il suo tradimento.
+      </div>
+    </div>
+
+    <!-- SEZIONE 6: vv. 121-157 -->
+    <div class="sezione-testo">
+      <div class="sezione-header">
+        <span class="sezione-vv">vv. 121–157</span>
+        <span class="sezione-titolo">Branca Doria — L'invettiva contro Genova</span>
+      </div>
+      <div class="terzina">
+        <span class="verso"><span class="vnum">121</span>«Oh», diss'io lui, «or se' tu ancor morto?».</span>
+        <span class="verso"><span class="vnum">122</span>Ed elli a me: «Come 'l mio corpo stea</span>
+        <span class="verso"><span class="vnum">123</span>nel mondo sù, nulla scïenza porto.</span>
+      </div>
+      <div class="terzina">
+        <span class="verso"><span class="vnum">124</span>Cotal vantaggio ha questa Tolomea,</span>
+        <span class="verso"><span class="vnum">125</span>che spesse volte l'anima ci cade</span>
+        <span class="verso"><span class="vnum">126</span>innanzi ch'Atropòs mossa le dea.</span>
+      </div>
+      <div class="terzina">
+        <span class="verso"><span class="vnum">139</span>«Io credo», diss'io lui, «che tu m'inganni;</span>
+        <span class="verso"><span class="vnum">140</span>ché Branca Doria non morì unquanche,</span>
+        <span class="verso"><span class="vnum">141</span>e mangia e bee e dorme e veste panni».</span>
+      </div>
+      <div class="terzina">
+        <span class="verso"><span class="vnum">148</span>«Ma distendi oggimai in qua la mano;</span>
+        <span class="verso"><span class="vnum">149</span>aprimi li occhi». E io non gliel apersi;</span>
+        <span class="verso"><span class="vnum">150</span>e cortesia fu lui esser villano.</span>
+      </div>
+      <div class="terzina">
+        <span class="verso"><span class="vnum">151</span>Ahi Genovesi, uomini diversi</span>
+        <span class="verso"><span class="vnum">152</span>d'ogne costume e pien d'ogne magagna,</span>
+        <span class="verso"><span class="vnum">153</span>perché non siete voi del mondo spersi?</span>
+      </div>
+      <div class="terzina">
+        <span class="verso"><span class="vnum">154</span>Ché col peggiore spirto di Romagna</span>
+        <span class="verso"><span class="vnum">155</span>trovai di voi un tal, che per sua opra</span>
+        <span class="verso"><span class="vnum">156</span>in anima in Cocito già si bagna,</span>
+      </div>
+      <div class="terzina">
+        <span class="verso"><span class="vnum">157</span>e in corpo par vivo ancor di sopra.</span>
+      </div>
+      <div class="commento-inline">
+        <strong>Contenuto</strong>
+        Alberigo spiega il privilegio terribile della Tolomea: l'anima dei traditori degli ospiti precipita all'Inferno immediatamente, prima che Atropo (la Parca che taglia il filo della vita) li colpisca. Il corpo continua a vivere sulla Terra mosso da un demonio. Rivela poi la presenza di Branca Doria, ancora vivo nel 1300. Dante, dopo aver ottenuto le informazioni, non mantiene la promessa: non libera Alberigo dal ghiaccio. «E cortesia fu lui esser villano»: verso i traditori, la crudeltà è giustizia. Il canto si chiude con una breve ma feroce invettiva contro Genova, che ha prodotto individui così malvagi da avere l'anima a Cocito mentre il corpo ancora cammina tra i vivi.
+      </div>
+    </div>
+
+  </div><!-- fine terzine-panel -->
+</div><!-- fine testo-layout -->
+</section>
+
+<!-- COMMENTO -->
+<section id="commento">
+<div class="container">
+  <p class="sec-label">Sezione V</p>
+  <h2 class="sec-title">Commento Analitico</h2>
+  <div class="divider"></div>
+  <p style="color:var(--text-muted);font-size:17px;margin-bottom:2.5rem;max-width:700px">Analisi approfondita del lessico, delle figure retoriche e dello stile per ciascuna sezione del canto.</p>
+  <div class="commento-accordions">
+
+    <div class="acc">
+      <button class="acc-btn" onclick="toggleAcc(this)">
+        <span><span class="acc-vv">vv. 1–3</span><span class="acc-title">Prima terzina — Apertura in stile tragico</span></span>
+        <span class="acc-arr">▾</span>
+      </button>
+      <div class="acc-body">
+        <div class="analisi-block">
+          <p class="analisi-label">Contenuto e parafrasi</p>
+          <div class="analisi-text"><p>Il peccatore solleva la bocca dal suo pasto feroce — il cranio di Ruggieri, che stava addentando — e la pulisce usando come panno i capelli della testa devastata nella parte posteriore.</p></div>
+        </div>
+        <div class="analisi-block">
+          <p class="analisi-label">Stile</p>
+          <div class="analisi-text"><p>Lo stile è quello tragico dantesco: straordinaria densità concettuale, solennità, atmosfera cupa. Rispetto ad altre zone dell'Inferno Dante adotta un registro alto, con lessico improntato a un realismo espressionistico estremo, tipico dell'ultimo Inferno.</p></div>
+        </div>
+        <div class="analisi-block">
+          <p class="analisi-label">Figure retoriche</p>
+          <div class="analisi-text">
+            <p><span class="figura">Metafora</span> <em>«fiero pasto»</em>: l'aggettivo «fiero», che indica fierezza animale, descrive un atto di cannibalismo infernale, elevando l'orrore a dimensione epica.</p>
+            <p><span class="figura">Realismo descrittivo</span> <em>«di retro guasto»</em>: specifica il punto dell'offesa, sottolineando il contrappasso — come Ruggieri agì subdolamente alle spalle di Ugolino, ora Ugolino rode il suo capo a partire dalla nuca.</p>
+            <p><span class="figura">Prolessi narrativa</span>: questo gesto silenzioso e terribile prepara il lettore alla parola che seguirà, creando un contrasto netto tra bestialità dell'azione e successiva eloquenza del discorso.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="acc">
+      <button class="acc-btn" onclick="toggleAcc(this)">
+        <span><span class="acc-vv">vv. 7–9</span><span class="acc-title">Terza terzina — Parole come semenza d'infamia</span></span>
+        <span class="acc-arr">▾</span>
+      </button>
+      <div class="acc-body">
+        <div class="analisi-block">
+          <p class="analisi-label">Contenuto</p>
+          <div class="analisi-text"><p>Ugolino stabilisce la condizione per parlare: il racconto non è uno sfogo, ma un'arma di vendetta politica e morale. Accetterà il dolore del ricordo solo se la sua testimonianza produrrà l'infamia eterna di Ruggieri.</p></div>
+        </div>
+        <div class="analisi-block">
+          <p class="analisi-label">Figure retoriche</p>
+          <div class="analisi-text">
+            <p><span class="figura">Metafora della semina</span>: le parole come «semenza» che «frutti infamia» — la narrazione è un atto generativo che deve produrre un risultato concreto nel mondo dei vivi.</p>
+            <p><span class="figura">Antitesi</span>: «parlare e lagrimar vedrai insieme» — dolore del pianto e lucidità della parola si fondono in un'immagine di sofferenza comunicativa.</p>
+            <p><span class="figura">Allitterazione</span> della sibilante-s e della f: «semenza», «traditor», «frutti», «infamia» — trasmette l'astio e il desiderio di vendetta.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="acc">
+      <button class="acc-btn" onclick="toggleAcc(this)">
+        <span><span class="acc-vv">vv. 13–15</span><span class="acc-title">Quinta terzina — La presentazione lapidaria</span></span>
+        <span class="acc-arr">▾</span>
+      </button>
+      <div class="acc-body">
+        <div class="analisi-block">
+          <p class="analisi-label">Stile e lessico</p>
+          <div class="analisi-text"><p>Il registro è secco, espositivo e lapidario, come un'iscrizione funeraria o un verbale giudiziario. Il passato remoto <em>«fui»</em> è fondamentale: indica che il titolo e il potere appartengono a una vita conclusa. Ugolino non è più il conte, ma lo è stato.</p></div>
+        </div>
+        <div class="analisi-block">
+          <p class="analisi-label">Figure retoriche</p>
+          <div class="analisi-text">
+            <p><span class="figura">Parallelismo</span>: «io fui conte Ugolino / e questi è l'arcivescovo Ruggieri» — i due avversari sullo stesso piano, accomunati dalla stessa zona infernale.</p>
+            <p><span class="figura">Antitesi temporale</span>: il contrasto tra il passato «fui» e il presente «è» sottolinea la caduta dalla gloria terrena alla miseria eterna.</p>
+            <p><span class="figura">Eufemismo</span>: «tal vicino» — termine spaziale neutro per descrivere l'atto mostruoso del rodere il cranio altrui.</p>
+            <p><span class="figura">Deissi</span>: «questi» presuppone un gesto fisico di indicazione, aumentando il realismo drammatico della scena.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="acc">
+      <button class="acc-btn" onclick="toggleAcc(this)">
+        <span><span class="acc-vv">vv. 22–48</span><span class="acc-title">La torre e il sogno — Allegoria della caccia</span></span>
+        <span class="acc-arr">▾</span>
+      </button>
+      <div class="acc-body">
+        <div class="analisi-block">
+          <p class="analisi-label">Stile</p>
+          <div class="analisi-text"><p>Stile tragico dantesco per i vv. 22-27, poi «plurilinguismo» dantesco: elementi della poesia elevata e cortese si fondono con lessico venatorio («donno», latinismo; «cagne», «cacciando», «lupicini»). Dal v. 31 lo stile diventa narrativo e analitico, con registro tecnico-venatorio per il sogno premonitore.</p></div>
+        </div>
+        <div class="analisi-block">
+          <p class="analisi-label">Figure retoriche</p>
+          <div class="analisi-text">
+            <p><span class="figura">Allegoria</span>: l'intera scena della caccia è allegorica. Le cagne = popolo pisano; i cacciatori (Gualandi, Sismondi, Lanfranchi) = leader ghibellini; il lupo e i lupicini = Ugolino e i figli.</p>
+            <p><span class="figura">Personificazione</span>: i tre aggettivi riferiti alle cagne — «magre, studiose e conte» — sono attributi umani applicati alle bestie, suggerendo che la folla sia stata scientificamente «istruita» all'odio.</p>
+            <p><span class="figura">Climax</span>: «magre, studiose e conte» — da condizione fisica (affamate), a disposizione psicologica (accanite), a competenza strategica (esperte). La minaccia si fa crescente.</p>
+            <p><span class="figura">Perifrasi</span>: «al monte / per che i Pisan veder Lucca non ponno» — il Monte San Giuliano (Monte Pisano) che si erge tra Pisa e Lucca, senza nominarlo.</p>
+            <p><span class="figura">Metonimia</span>: «più lune» — la luna per il mese, con valore visivo (l'unica cosa visibile dalla feritoia della torre).</p>
+            <p><span class="figura">Metafora</span>: «del futuro mi squarciò 'l velame» — il futuro come velo che il sogno premonitore lacera violentemente.</p>
+            <p><span class="figura">Onomatopea</span>: «chiavar» — il suono sordo del chiodo nella serratura, tra i più tesi del canto.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="acc">
+      <button class="acc-btn" onclick="toggleAcc(this)">
+        <span><span class="acc-vv">vv. 49–75</span><span class="acc-title">L'agonia — Figure cristologiche e paralisi emotiva</span></span>
+        <span class="acc-arr">▾</span>
+      </button>
+      <div class="acc-body">
+        <div class="analisi-block">
+          <p class="analisi-label">Stile</p>
+          <div class="analisi-text"><p>I vv. 49-54 mostrano paralisi emotiva e rottura della comunicazione: Ugolino non è più in grado di provare emozioni. Fortissimo contrasto tra l'«io» e l'«elli» (i figli). I vv. 55-57 usano la luce come elemento divino ma portatore di orrore. I vv. 67-69 contengono un chiarissimo riferimento al grido di abbandono del Salmo 22, costruendo una passione laica: i giovani sono figure cristologiche che pagano per colpe altrui.</p></div>
+        </div>
+        <div class="analisi-block">
+          <p class="analisi-label">Figure retoriche</p>
+          <div class="analisi-text">
+            <p><span class="figura">Metafora</span>: «dentro impetrai» — Ugolino è pietrificato nell'animo, metafora dell'anestesia emotiva totale.</p>
+            <p><span class="figura">Antitesi</span>: Ugolino non piange, i figli piangono — contrasto tra il padre e i figli.</p>
+            <p><span class="figura">Specchio / metafora</span>: nei quattro visi Ugolino vede «il mio aspetto stesso» — la propria morte riflessa nei volti dei figli.</p>
+            <p><span class="figura">Sineddoche</span>: «queste misere carni» per l'intero corpo — con annessa antitesi sullo spogliare e rivestire le carni (eco dell'investitura dell'anima nel corpo).</p>
+            <p><span class="figura">Apostrofe</span>: «ahi dura terra, perché non t'apristi?» — la terra personificata, con riferimento al mito classico in cui si apre per pietà o punizione.</p>
+            <p><span class="figura">Climax</span>: la situazione peggiora di giorno in giorno fino all'estremo, con i figli che muoiono «ad uno ad uno».</p>
+            <p><span class="figura">Poliptoto</span>: «padre» ripetuto in varie forme — non distoglie l'attenzione dal personaggio centrale.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="acc">
+      <button class="acc-btn" onclick="toggleAcc(this)">
+        <span><span class="acc-vv">vv. 79–90</span><span class="acc-title">L'invettiva contro Pisa — Novella Tebe</span></span>
+        <span class="acc-arr">▾</span>
+      </button>
+      <div class="acc-body">
+        <div class="analisi-block">
+          <p class="analisi-label">Stile</p>
+          <div class="analisi-text"><p>Passaggio solenne e lapidario. Dante abbandona il linguaggio aspro del «pasto bestiale» per un registro più alto e dolente, dove la concisione rende ancora più insopportabile il peso dell'ingiustizia. La chiusura è fulminea: in tre versi — vv. 88-90 — condensa il nucleo emotivo dell'intero episodio.</p></div>
+        </div>
+        <div class="analisi-block">
+          <p class="analisi-label">Figure retoriche</p>
+          <div class="analisi-text">
+            <p><span class="figura">Anastrofe</span>: «Innocenti facea l'età novella» — «Innocenti» in apertura di verso come accusa morale immediata, prima ancora di nominare le vittime.</p>
+            <p><span class="figura">Antonomasia</span>: «novella Tebe» — Pisa come la città più maledetta del mito greco, teatro degli orrori della stirpe di Edipo.</p>
+            <p><span class="figura">Epanalessi</span>: «novella» si ripete tra il v. 88 e il v. 89 con effetto tragico — la giovane età delle vittime si scontra con la rinata crudeltà della città.</p>
+            <p><span class="figura">Perifrasi</span>: «li altri due che 'l canto suso appella» — Gaddo e Anselmuccio citati indirettamente, per invitare il lettore a ricordare i loro volti.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="acc">
+      <button class="acc-btn" onclick="toggleAcc(this)">
+        <span><span class="acc-vv">vv. 94–120</span><span class="acc-title">La Tolomea — Ossimoro del pianto e frate Alberigo</span></span>
+        <span class="acc-arr">▾</span>
+      </button>
+      <div class="acc-body">
+        <div class="analisi-block">
+          <p class="analisi-label">Stile</p>
+          <div class="analisi-text"><p>Le parole «rintoppo» e «ambascia» evocano sensazione fisica di oppressione. Il termine «visiere» richiama il mondo cavalleresco ma lo stravolge: la visiera qui imprigiona invece di proteggere. La supplica di Alberigo usa un linguaggio carnale — «impregna» — che descrive un dolore fisico insostenibile.</p></div>
+        </div>
+        <div class="analisi-block">
+          <p class="analisi-label">Figure retoriche</p>
+          <div class="analisi-text">
+            <p><span class="figura">Ossimoro</span>: il pianto che impedisce di piangere — paradosso fisico e psicologico della Tolomea.</p>
+            <p><span class="figura">Poliptoto</span>: «pianto» e «pianger» ravvicinati per esasperare il concetto del pianto negato.</p>
+            <p><span class="figura">Similitudine</span>: le lacrime congelate come «visiere di cristallo» — il cristallo richiamava la convinzione scientifica medievale che fosse vetro indurito dal tempo.</p>
+            <p><span class="figura">Similitudine</span>: l'insensibilità del viso paragonata a quella di un callo — metafora cruda e realistica.</p>
+            <p><span class="figura">Perifrasi botanica</span>: Alberigo usa «frutta», «orto», «dattero», «figo» per descrivere il delitto e la pena — contrasto stridente con l'orrore del luogo.</p>
+            <p><span class="figura">Ripetizione</span>: «I' son frate Alberigo / i' son quel…» — la tragica presa di coscienza della propria identità perduta.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="acc">
+      <button class="acc-btn" onclick="toggleAcc(this)">
+        <span><span class="acc-vv">vv. 148–157</span><span class="acc-title">La villania come cortesia — Invettiva contro Genova</span></span>
+        <span class="acc-arr">▾</span>
+      </button>
+      <div class="acc-body">
+        <div class="analisi-block">
+          <p class="analisi-label">Contenuto e stile</p>
+          <div class="analisi-text"><p>Dante non mantiene la promessa fatta ad Alberigo: non libera il dannato dal ghiaccio. Giustifica il gesto con un capovolgimento morale: nell'Inferno, che è il luogo della giustizia divina, la pietà verso il male può diventare ingiustizia verso Dio. L'invettiva contro Genova è più breve e sommessa rispetto a quella contro Pisa: Dante sembra ormai stremato dei propri rimproveri e intende passare oltre.</p></div>
+        </div>
+        <div class="analisi-block">
+          <p class="analisi-label">Figure retoriche</p>
+          <div class="analisi-text">
+            <p><span class="figura">Antitesi</span>: «cortesia» e «villano» — la vera cortesia consiste nell'essere crudele con chi ha tradito i legami più sacri.</p>
+            <p><span class="figura">Anastrofe</span>: «uomini diversi / d'ogne costume» — ordine sintattico invertito per dare forza all'accusa.</p>
+            <p><span class="figura">Polisindeto</span>: «e mangia e bee e dorme e veste panni» — enumerazione per sottolineare l'assurdo paradosso del corpo vivo senza anima.</p>
+            <p><span class="figura">Perifrasi</span>: «col peggiore spirto di Romagna» — indica Alberigo senza nominarlo, come se il suo nome non meritasse di essere pronunciato di nuovo.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- VOCI DELLA CRITICA -->
+<section id="critica">
+<div class="container">
+  <p class="sec-label">Sezione VI</p>
+  <h2 class="sec-title">Voci della Critica</h2>
+  <div class="divider"></div>
+  <p style="color:var(--text-muted);font-size:17px;margin-bottom:2.5rem;max-width:700px">I principali interpreti del canto e le loro posizioni sui nodi più discussi: l'ambiguità del verso 75, il carattere di Ugolino, il valore allegorico del sogno.</p>
+  <div class="critica-grid">
+
+    <div class="critica-card">
+      <p class="critica-nome">Francesco De Sanctis</p>
+      <p class="critica-info">Storico e critico letterario, XIX sec.</p>
+      <p class="critica-text">Massimo esponente della critica romantica ottocentesca, De Sanctis è il più autorevole sostenitore di una lettura «pura» dell'episodio. Secondo lui, il verso conclusivo non implica alcun atto di antropofagia: Ugolino muore semplicemente di fame, stroncato dall'inedia dopo aver sopportato lo strazio indicibile della morte dei figli. De Sanctis esalta la grandezza tragica della figura paterna di Ugolino, rivendicandone la piena umanità come vertice della rappresentazione dantesca del dolore.</p>
+      <div class="critica-posizione">«La fame vinse il dolore»: semplice morte per inedia. Nessuna antropofagia.</div>
+    </div>
+
+    <div class="critica-card">
+      <p class="critica-nome">Jacopo della Lana</p>
+      <p class="critica-info">Primo commentatore dantesco, XIV sec.</p>
+      <p class="critica-text">Tra i primissimi commentatori della Commedia, Jacopo della Lana non esclude l'interpretazione più cruda del verso 75. Per lui il «digiuno» che «poté» sul «dolore» potrebbe indicare che Ugolino, sopraffatto dalla fame, si sia alla fine nutrito dei corpi dei figli morti. Questa lettura si inserisce coerentemente nel motivo del mangiare/essere mangiati che percorre tutto il canto, dalla scena iniziale del rodere il cranio di Ruggieri all'offerta dei figli di farsi divorare.</p>
+      <div class="critica-posizione">Non esclude il cannibalismo post mortem come chiave di lettura del v. 75.</div>
+    </div>
+
+    <div class="critica-card">
+      <p class="critica-nome">Jorge Luis Borges</p>
+      <p class="critica-info">Scrittore argentino, «Nove saggi danteschi», 2001</p>
+      <p class="critica-text">Nel suo celebre saggio dantesco, Borges legge l'ambiguità del verso 75 come una scelta deliberata e irrisolvibile del poeta. Dante avrebbe voluto insinuare nel lettore il sospetto che il cannibalismo sia avvenuto, senza mai confermarlo né smentirlo. L'ambiguità diventa così un dispositivo estetico e morale: la questione rimane aperta, e proprio nella sua irrisolvibilità risiede una parte del potere perturbante dell'episodio.</p>
+      <div class="critica-posizione">L'ambiguità è voluta: Dante insinua il sospetto senza mai risolverlo. Il problema «resta e anche irrisolto».</div>
+    </div>
+
+    <div class="critica-card">
+      <p class="critica-nome">Mario Marcazzan</p>
+      <p class="critica-info">Dantista italiano, XX sec.</p>
+      <p class="critica-text">Marcazzan si è concentrato sul valore allegorico e narrativo del sogno premonitore. Secondo il suo studio, il sogno non è solo un espediente narrativo per anticipare la tragedia, ma prefigura con precisione strutturale la caccia del popolo pisano — aizzato da Ruggieri — contro Ugolino e i suoi figli. Il lupo e i lupicini rappresentano perfettamente la condizione di chi, preda della politica, vede i propri legami più naturali (la famiglia) divenire bersaglio della vendetta collettiva.</p>
+      <div class="critica-posizione">Il sogno prefigura la caccia del popolo aizzato da Ruggieri contro il «lupo» Ugolino e i suoi «lupicini».</div>
+    </div>
+
+    <div class="critica-card">
+      <p class="critica-nome">Benvenuto da Imola</p>
+      <p class="critica-info">Commentatore dantesco, XIV sec.</p>
+      <p class="critica-text">Benvenuto da Imola, nel suo ampio commento alla Commedia, ha fornito importanti chiarimenti sul personaggio di frate Alberigo. In particolare ha identificato il «mal orto» della celebre terzina — «i' son quel da le frutta del mal orto» — non con la mente malvagia del frate, come altri intendevano, ma con la città di Faenza stessa, teatro del delitto. L'«orto» sarebbe quindi il luogo fisico del tradimento, la villa di Pieve Cesato dove avvenne il massacro del 1285.</p>
+      <div class="critica-posizione">Il «mal orto» è la città di Faenza, teatro fisico del delitto di Alberigo.</div>
+    </div>
+
+    <div class="critica-card">
+      <p class="critica-nome">Indagini scientifiche del Comune di Pisa</p>
+      <p class="critica-info">Analisi del DNA, resti ritrovati nel 1928</p>
+      <p class="critica-text">Nel 1928 furono ritrovati nella cappella della chiesa di San Francesco a Pisa quelli che si suppone siano i resti di Ugolino e degli altri rinchiusi con lui nella Muda. Le analisi del DNA promosse dal Comune di Pisa hanno identificato cinque salme, morte effettivamente per denutrizione: l'individuo più anziano aveva oltre settant'anni, altri due avevano tra i quaranta e i cinquant'anni, i due rimanenti erano più giovani. Se l'identificazione è corretta, l'età avanzata di Ugolino e le sue condizioni fisiche rendono improbabile qualunque atto di cannibalismo, escludendo di fatto l'interpretazione più cruda del v. 75.</p>
+      <div class="critica-posizione">Cinque salme morte per denutrizione. Le condizioni dei resti rendono improbabile il cannibalismo.</div>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- FONTI -->
+<section id="fonti">
+<div class="container">
+  <p class="sec-label">Sezione VII</p>
+  <h2 class="sec-title">Fonti</h2>
+  <div class="divider"></div>
+  <ul class="fonti-list">
+    <li class="fonte-item">
+      <span class="fonte-num">I</span>
+      <span class="fonte-text"><em>La Divina Commedia — Inferno, Canto XXXIII</em>, Dante Alighieri.<br><strong>Ed. di riferimento:</strong> Giorgio Petrocchi (a cura di), <em>La Commedia secondo l'antica vulgata</em>, Mondadori, Milano, 1966–67.</span>
+    </li>
+    <li class="fonte-item">
+      <span class="fonte-num">II</span>
+      <span class="fonte-text">Francesco De Sanctis, <em>Storia della letteratura italiana</em>, Napoli, 1870–71.</span>
+    </li>
+    <li class="fonte-item">
+      <span class="fonte-num">III</span>
+      <span class="fonte-text">Jorge Luis Borges, <em>Nove saggi danteschi</em>, trad. it., Adelphi, Milano, 2001.</span>
+    </li>
+    <li class="fonte-item">
+      <span class="fonte-num">IV</span>
+      <span class="fonte-text">Jacopo della Lana, <em>Commento alla Commedia di Dante Alighieri</em>, Bologna, ca. 1324–28.</span>
+    </li>
+    <li class="fonte-item">
+      <span class="fonte-num">V</span>
+      <span class="fonte-text">Benvenuto da Imola, <em>Comentum super Dantis Aldigherij Comoediam</em>, ca. 1375–80.</span>
+    </li>
+    <li class="fonte-item">
+      <span class="fonte-num">VI</span>
+      <span class="fonte-text">Publio Papinio Stazio, <em>Tebaide</em> — fonte dantesca per il paragone Pisa/Tebe (riferimento nel canto XXXIII).</span>
+    </li>
+    <li class="fonte-item">
+      <span class="fonte-num">VII</span>
+      <span class="fonte-text"><em>Enciclopedia Dantesca</em>, Istituto dell'Enciclopedia Italiana (Treccani), Roma, 1970–78.</span>
+    </li>
+    <li class="fonte-item">
+      <span class="fonte-num">VIII</span>
+      <span class="fonte-text">Ricerca del DNA sui resti ritrovati nel 1928 nella chiesa di San Francesco a Pisa, promossa dal Comune di Pisa (risultati pubblicati negli anni 2000).</span>
+    </li>
+  </ul>
+</div>
+</section>
+
+<script>
+function toggleAcc(btn){
+  const body=btn.nextElementSibling;
+  const isOpen=btn.classList.contains('open');
+  document.querySelectorAll('.acc-btn').forEach(b=>{
+    b.classList.remove('open');
+    b.nextElementSibling.classList.remove('open');
+  });
+  if(!isOpen){btn.classList.add('open');body.classList.add('open')}
+}
+
+// Active nav link on scroll
+const sections=document.querySelectorAll('section[id]');
+const navLinks=document.querySelectorAll('.nav-links a');
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      navLinks.forEach(a=>a.classList.remove('active'));
+      const a=document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
+      if(a)a.classList.add('active');
+    }
+  });
+},{threshold:.25,rootMargin:`-${64}px 0px 0px 0px`});
+sections.forEach(s=>obs.observe(s));
+</script>
+</body>
+</html>
